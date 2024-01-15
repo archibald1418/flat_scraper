@@ -17,6 +17,7 @@ class Place:
     name: str
     contact: str
     link: str
+    email: str | None
     address: str | None
     al_num: str | None
 

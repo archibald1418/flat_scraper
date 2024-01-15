@@ -10,7 +10,7 @@ from scrapy.http import TextResponse
 from scrapy_playwright.page import PageMethod
 from ..items import Place, IsDataclass
 
-from config import Config
+from .config import Config
 
 class CallbackKwargs(TypedDict):
     place: Place
@@ -41,9 +41,14 @@ class AlojamentospiderSpider(scrapy.Spider):
         addr: str | None = response.xpath(
             '//div[@class="map-block-address"]/ul/li/p/text()'
         ).get()
+        email: str | None = response.xpath(
+            '//*[@id="qa-3dd836"]/a'
+        ).attrib.get('href')
         place: Place = kwargs["place"]
         if addr:
             place.address = addr
+        if email:
+            place.email = email.split('mailto:')[-1]
         yield kwargs["place"]
 
     def parse(
@@ -74,6 +79,7 @@ class AlojamentospiderSpider(scrapy.Spider):
                         # shield for '+' in phone numbers
                         contact=f"'{contact.strip()}",
                         address=None,
+                        email=None
                     )
                 ),
             )

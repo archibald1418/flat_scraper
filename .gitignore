@@ -2,4 +2,4 @@
 *.csv
 *.json
 __pycache__/
-
+log/
