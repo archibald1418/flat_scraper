@@ -3,17 +3,23 @@
 # See documentation in:
 # https://docs.scrapy.org/en/latest/topics/items.html
 
-from dataclasses import dataclass
+from __future__ import annotations
+
+from dataclasses import dataclass, Field
 from typing import ClassVar, Dict, Protocol
 
 
 class IsDataclass(Protocol):
     __dataclass_fields__: ClassVar[Dict]
 
-@dataclass
+@dataclass()
 class Place:
-    address: str | None
     name: str
-    al_num: str | None
     contact: str
     link: str
+    address: str | None
+    al_num: str | None
+
+@dataclass
+class Address:
+    address: str
