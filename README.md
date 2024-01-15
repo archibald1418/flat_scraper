@@ -1,3 +1,9 @@
 #### Scraping flats with Scrapy
 
-```scrapy crawl alojamentospider -O <filename.{csv, json}>```
+##### Installing
+
+```pip install -r requirements.txt```
+Make sure playwright is intalled: ```playwright install``` 
+
+##### Running
+```scrapy crawl alojamentospider -O <your_filename.{csv, json}>```
