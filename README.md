@@ -4,7 +4,7 @@
 
 ```pip install -r requirements.txt```
 
-Make sure playwright is intalled: ```playwright install``` 
+Make sure playwright is installed: ```playwright install``` 
 
 ##### Running
 ```scrapy crawl alojamentospider -O <your_filename.{csv, json}>```
